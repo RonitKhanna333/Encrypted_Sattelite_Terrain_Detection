@@ -1,0 +1,8 @@
+tensorflow
+tensorflow-datasets
+numpy
+matplotlib
+joblib
+scikit-learn
+tenseal
+seaborn
