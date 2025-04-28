@@ -27,7 +27,7 @@ Data Collection → Data Pre-Processing → Model Training → Model Testing →
 | ![Image](sealake.jpg) | SeaLake | Forest | ✗ |
 
 ## 4. Live Link
-Link: www.SatelliteImageClassifier.com
+Link: https://ronitkhanna.streamlit.app/
 
 ## 5. Screenshot of the Interface
 ![Interface Screenshot](image.png)
@@ -180,13 +180,7 @@ This project demonstrates privacy-preserving machine learning using homomorphic 
 3. Visualizations compare original, encrypted, and decrypted data
 4. Mean squared error is calculated to demonstrate encryption accuracy
 
-## License
 
-[Your license information here]
-
-## Contributors
-
-[Your name and other contributors]
 
 ## Acknowledgements
 
