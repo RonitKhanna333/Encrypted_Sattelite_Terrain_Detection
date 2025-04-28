@@ -8,7 +8,7 @@ EuroSAT Dataset Loading → Image Preprocessing (Resize/Normalize) → Transfer 
 ## 2. Description
 * Dataset = EuroSAT RGB Satellite Imagery
 * Best Model = MobileNetV2 Transfer Learning
-* Best Accuracy = 94%
+* Best Accuracy = 91.85%
 * Other information:
   * Advanced satellite image classification system using TensorFlow
   * Transfer learning with MobileNetV2 and custom CNN options
