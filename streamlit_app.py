@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import joblib
 from sklearn.metrics import classification_report, confusion_matrix
 import seaborn as sns
+import random
 
 # --- Attempt to fix XLA/PTXAS issues ---
 # IMPORTANT: Replace with the correct path to your CUDA installation visible from WSL
@@ -252,6 +253,72 @@ with col2:
         st.image(TRAINING_HISTORY_IMG, caption="Model Training History (Accuracy & Loss)")
     else:
         st.warning(f"Training history image not found at {TRAINING_HISTORY_IMG}")
+
+# --- Sample Test Images Prediction Section ---
+st.header("Test Model with Sample Images")
+
+if test_ds and model:
+    try:
+        # Get a batch of test images
+        sample_images = []
+        sample_labels = []
+        
+        # Collect 6 random test samples
+        for images, labels in test_ds.unbatch().shuffle(buffer_size=1000).take(6):
+            sample_images.append(images.numpy())
+            sample_labels.append(labels.numpy())
+        
+        # Display images in a 2x3 grid with predictions
+        st.write("Click on any image to see the model's prediction:")
+        
+        # Create 2 rows of 3 columns each
+        for row in range(2):
+            cols = st.columns(3)
+            for col in range(3):
+                idx = row * 3 + col
+                if idx < len(sample_images):
+                    # Create a container for each image
+                    with cols[col]:
+                        # Convert to PIL Image for display
+                        img_array = (sample_images[idx] * 255).astype(np.uint8)
+                        img = Image.fromarray(img_array)
+                        
+                        # Get true label
+                        true_label = CLASS_NAMES[sample_labels[idx]]
+                        
+                        # Display image with expandable details
+                        with st.expander(f"Sample {idx+1} (True: {true_label})"):
+                            st.image(img, use_column_width=True)
+                            
+                            # Add a button to predict
+                            if st.button(f"Predict Sample {idx+1}", key=f"predict_{idx}"):
+                                # Add batch dimension for prediction
+                                input_image = tf.expand_dims(sample_images[idx], axis=0)
+                                
+                                # Make prediction
+                                prediction = model.predict(input_image, verbose=0)[0]
+                                pred_idx = np.argmax(prediction)
+                                pred_label = CLASS_NAMES[pred_idx]
+                                confidence = prediction[pred_idx]
+                                
+                                # Display prediction result
+                                correct = pred_idx == sample_labels[idx]
+                                result_color = "green" if correct else "red"
+                                
+                                st.markdown(f"<span style='color:{result_color}'>Prediction: **{pred_label}**</span>", unsafe_allow_html=True)
+                                st.write(f"Confidence: {confidence:.4f}")
+                                
+                                # Show top 3 predictions
+                                st.write("Top 3 predictions:")
+                                top_indices = np.argsort(prediction)[-3:][::-1]
+                                for i in top_indices:
+                                    st.write(f"- {CLASS_NAMES[i]}: {prediction[i]:.4f}")
+                                    
+    except Exception as e:
+        logging.error(f"Error displaying sample test images: {e}", exc_info=True)
+        st.error(f"Error displaying sample test images: {e}")
+else:
+    st.warning("Model or test dataset not loaded. Cannot display sample predictions.")
 
 # --- Interactive Prediction ---
 st.header("Test with Your Own Image")
