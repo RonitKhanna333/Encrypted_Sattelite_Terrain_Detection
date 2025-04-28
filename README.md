@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 # Satellite Image Classification
 
 ## 1. Methodology
 ```
-Data Collection → Data Pre-Processing → Model Training → Model Testing → Result Analysis
+EuroSAT Dataset Loading → Image Preprocessing (Resize/Normalize) → Transfer Learning with MobileNetV2 → Feature Extraction → TenSEAL Homomorphic Encryption → Model Evaluation → Streamlit Web Interface
 ```
 
 ## 2. Description
@@ -34,62 +33,14 @@ Link: https://ronitkhanna.streamlit.app/
 
 ## Installation Requirements
 ```bash
-=======
-# Advanced Satellite Image Classification System
-
-## Overview
-
-This project implements an advanced satellite image classification system using deep learning techniques in TensorFlow. The system features a comprehensive approach to satellite imagery analysis with both traditional CNN and transfer learning methodologies.
-
-## Key Features
-
-- **Advanced Model Architecture**: 
-  - Transfer learning with MobileNetV2 pre-trained model
-  - Custom CNN implementation with batch normalization and dropout
-  - Configurable between transfer learning and custom architectures
-
-- **GPU Acceleration**:
-  - CUDA/cuDNN optimization for faster processing
-  - Built-in GPU detection and configuration
-  - XLA optimization with fallback mechanisms for PTXAS issues
-
-- **Interactive Web Interface**:
-  - Streamlit-based dashboard for model evaluation and visualization
-  - Real-time prediction capabilities on user-uploaded images
-  - Comprehensive model evaluation with confusion matrix and classification reports
-
-- **Homomorphic Encryption**:
-  - Feature vector encryption using TenSEAL library
-  - Data privacy demonstration with homomorphic encryption
-  - Visualization of encrypted vs. original data
-
-- **EuroSAT Dataset Integration**:
-  - High-quality RGB satellite imagery classification
-  - Multi-class land use and land cover classification
-  - Proper train/validation/test splits
-
-## Installation Requirements
-
-```bash
 # Clone the repository
 https://github.com/RonitKhanna333/Hackspire.git
 cd Hackspire
 
->>>>>>> c8cfe12a68ae4bc53bbae6173d8489383af96cae
 # Install dependencies
 pip install -r requirements.txt
 ```
 
-<<<<<<< HEAD
-## Usage
-```bash
-# Train the model
-python advanced_model.py
-
-# Launch the web interface
-streamlit run streamlit_app.py
-```
-=======
 ### Dependencies
 
 The project requires the following packages:
@@ -180,11 +131,8 @@ This project demonstrates privacy-preserving machine learning using homomorphic 
 3. Visualizations compare original, encrypted, and decrypted data
 4. Mean squared error is calculated to demonstrate encryption accuracy
 
-
-
 ## Acknowledgements
 
 - EuroSAT dataset for providing high-quality satellite imagery
 - TensorFlow and Streamlit communities
 - TenSEAL project for homomorphic encryption capabilities
->>>>>>> c8cfe12a68ae4bc53bbae6173d8489383af96cae
