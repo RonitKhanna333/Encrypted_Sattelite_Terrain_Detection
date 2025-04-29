@@ -34,8 +34,8 @@ Link: https://huggingface.co/spaces/HulkBuster333/Ronit-Khanna
 ## Installation Requirements
 ```bash
 # Clone the repository
-https://github.com/RonitKhanna333/Hackspire.git
-cd Hackspire
+https://github.com/RonitKhanna333/Encrypted_Sattelite_Terrain_Detectione.git
+cd Encrypted_Sattelite_Terrain_Detection
 
 # Install dependencies
 pip install -r requirements.txt
