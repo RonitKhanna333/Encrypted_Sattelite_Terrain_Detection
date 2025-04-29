@@ -26,7 +26,7 @@ EuroSAT Dataset Loading → Image Preprocessing (Resize/Normalize) → Transfer 
 | ![Image](sealake.jpg) | SeaLake | Forest | ✗ |
 
 ## 4. Live Link
-Link: https://huggingface.co/spaces/HulkBuster333/Ronit-Khanna
+Link: (https://turbo-acorn-wx66pwgw9gg2r6x.github.dev/)
 
 ## 5. Screenshot of the Interface
 ![Interface Screenshot](image.png)
